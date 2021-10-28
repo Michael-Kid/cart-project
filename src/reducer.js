@@ -1,33 +1,14 @@
 const reducer = (state, action) => {
   if (action.type === 'CLEAR_CART') {
-    return { ...state, cart: [] }
+    return { ...state, cart: [], chosenId: [] }
   }
+
   if (action.type === 'REMOVE') {
     return {
       ...state,
       cart: state.cart.filter((cartItem) => cartItem.id !== action.payload),
+      chosenId: state.chosenId.filter((item) => !item.includes(action.payload)),
     }
-  }
-  if (action.type === 'INCREASE') {
-    let tempCart = state.cart.map((cartItem) => {
-      if (cartItem.id === action.payload) {
-        return { ...cartItem, amount: cartItem.amount + 1 }
-      }
-      return cartItem
-    })
-    return { ...state, cart: tempCart }
-  }
-
-  if (action.type === 'DECREASE') {
-    let tempCart = state.cart
-      .map((cartItem) => {
-        if (cartItem.id === action.payload) {
-          return { ...cartItem, amount: cartItem.amount - 1 }
-        }
-        return cartItem
-      })
-      .filter((cartItem) => cartItem.amount !== 0)
-    return { ...state, cart: tempCart }
   }
 
   if (action.type === 'GET_TOTALS') {
@@ -72,6 +53,16 @@ const reducer = (state, action) => {
     }
   }
 
+  if (action.type === 'ADD_TO_CART') {
+    let tempList = state.list.find((listItem) => listItem.id === action.payload)
+    let newCart = [...state.cart, tempList]
+    return {
+      ...state,
+      cart: newCart,
+      chosenId: [...state.chosenId, action.payload],
+    }
+  }
+
   if (action.type === 'TOGGLE_AMOUNT') {
     let tempCart = state.cart
       .map((cartItem) => {
@@ -86,13 +77,12 @@ const reducer = (state, action) => {
         return cartItem
       })
       .filter((cartItem) => cartItem.amount !== 0)
-    return { ...state, cart: tempCart }
-  }
-
-  if (action.type === 'ADD_TO_CART') {
-    let tempList = state.list.find((listItem) => listItem.id === action.payload)
-    let newCart = [...state.cart, tempList]
-    return { ...state, cart: newCart }
+    let tempCartId = tempCart.map((item) => item.id)
+    return {
+      ...state,
+      cart: tempCart,
+      chosenId: tempCartId,
+    }
   }
 
   if (action.type === 'CART_TOTAL') {

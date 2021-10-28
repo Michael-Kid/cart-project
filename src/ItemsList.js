@@ -3,12 +3,12 @@ import { useGlobalContext } from './context'
 import ListItem from './ListItem'
 
 function ItemsList() {
-  const { list, sorted, backData } = useGlobalContext()
+  const { list, sorted, fetchData } = useGlobalContext()
   if (!list.length) {
     return (
       <div className='no-match'>
         <h1>no matching item</h1>
-        <button className='btn btn-empty ' onClick={backData}>
+        <button className='btn btn-empty ' onClick={fetchData}>
           Back to the Shop
         </button>
       </div>
@@ -20,12 +20,12 @@ function ItemsList() {
         {list.map((item) => {
           return <ListItem key={item.id} {...item} />
         })}
-        {sorted && (
-          <button className='btn clear-btn ' onClick={backData}>
-            Back to the Shop
-          </button>
-        )}
       </section>
+      {sorted && (
+        <button className='btn clear-btn ' onClick={fetchData}>
+          Back to the Shop
+        </button>
+      )}
     </main>
   )
 }

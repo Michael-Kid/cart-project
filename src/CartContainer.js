@@ -28,7 +28,7 @@ const CartContainer = () => {
       {/* cart items */}
       <div>
         {cart.map((item) => {
-          return <CartItem key={item.id} {...item} />
+          return <CartItem key={(Math.random() * 10).toString()} {...item} />
         })}
       </div>
       {/* cart footer */}

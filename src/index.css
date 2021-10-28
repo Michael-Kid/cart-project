@@ -91,6 +91,12 @@ p {
 }
 /* more global css */
 
+button:disabled:hover {
+  background: var(--clr-primary);
+  color: var(--clr-white);
+  cursor: default;
+}
+
 .btn {
   text-transform: uppercase;
   background: var(--clr-primary);

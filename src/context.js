@@ -12,6 +12,7 @@ const initialState = {
   amount: 0,
   sorted: false,
   search: '',
+  chosenId: [],
 }
 
 const AppProvider = ({ children }) => {
@@ -24,20 +25,16 @@ const AppProvider = ({ children }) => {
     dispatch({ type: 'SORTED_ITEMS', payload: { list: newList, name: name } })
   }
 
+  const addToCart = (id) => {
+    dispatch({ type: 'ADD_TO_CART', payload: id })
+  }
+
   const clearCart = () => {
     dispatch({ type: 'CLEAR_CART' })
   }
 
   const remove = (id) => {
     dispatch({ type: 'REMOVE', payload: id })
-  }
-
-  const increase = (id) => {
-    dispatch({ type: 'INCREASE', payload: id })
-  }
-
-  const decrease = (id) => {
-    dispatch({ type: 'DECREASE', payload: id })
   }
 
   const fetchData = async () => {
@@ -47,19 +44,8 @@ const AppProvider = ({ children }) => {
     dispatch({ type: 'DISPLAY_ITEMS', payload: { list, search: '' } })
   }
 
-  const backData = async () => {
-    dispatch({ type: 'LOADING' })
-    const response = await fetch(url)
-    const list = await response.json()
-    dispatch({ type: 'DISPLAY_ITEMS', payload: { list, search: '' } })
-  }
-
   const toggleAmount = (id, type) => {
     dispatch({ type: 'TOGGLE_AMOUNT', payload: { id, type } })
-  }
-
-  const addToCart = (id) => {
-    dispatch({ type: 'ADD_TO_CART', payload: id })
   }
 
   useEffect(() => {
@@ -80,12 +66,10 @@ const AppProvider = ({ children }) => {
         ...state,
         clearCart,
         remove,
-        decrease,
-        increase,
         toggleAmount,
         addToCart,
         sortItems,
-        backData,
+        fetchData,
       }}
     >
       {children}
