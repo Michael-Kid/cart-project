@@ -160,6 +160,17 @@ nav svg {
   margin-bottom: 0;
   font-size: 1.25rem;
 }
+
+.input-container input {
+  text-transform: uppercase;
+  padding: 0.375rem 0.75rem;
+  letter-spacing: var(--spacing);
+  border: none;
+  border-radius: 1rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  outline: none;
+}
+
 /*
 =============== 
 List
@@ -175,11 +186,16 @@ List
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  /* min-height: calc(100vh - 120px); */
   width: 90vw;
   margin: 0 auto;
   padding: 2.5rem 0;
   max-width: var(--fixed-width);
+}
+
+.no-match {
+  display: grid;
+  text-align: center;
+  margin: 1rem auto;
 }
 
 /*
@@ -195,6 +211,7 @@ Cart
   padding: 2.5rem 0;
   max-width: var(--fixed-width);
 }
+
 .cart h2 {
   text-transform: uppercase;
   text-align: center;
@@ -215,6 +232,15 @@ Cart
   display: flex;
   justify-content: space-between;
   margin-top: 1rem;
+}
+.btn-empty {
+  display: block;
+  background: transparent;
+  padding: 0.5rem 1rem;
+  color: var(--clr-red-dark);
+  border: 1px solid var(--clr-red-dark);
+  margin: 40px auto;
+  border-radius: var(--radius);
 }
 .clear-btn {
   background: transparent;
@@ -237,9 +263,7 @@ List Item
 */
 .list-item {
   display: grid;
-  width: 25vw;
-  grid-template-columns: auto auto;
-  grid-column-gap: 1.5rem;
+  width: 50%;
   margin: 1.5rem 0;
   text-align: center;
 }

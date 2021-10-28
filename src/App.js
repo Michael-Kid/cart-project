@@ -2,14 +2,7 @@ import React from 'react'
 import { useGlobalContext } from './context'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import CartContainer from './CartContainer'
-// import Navbar from './Navbar'
-// import ItemsList from './ItemsList'
-// components
-
-// import Navbar from './Navbar'
-// import CartContainer from './CartContainer'
 import Home from './Home'
-// items
 
 function App() {
   const { loading } = useGlobalContext()
@@ -23,8 +16,6 @@ function App() {
 
   return (
     <Router>
-      {/* <Navbar />
-      <ItemsList /> */}
       <Switch>
         <Route exact path='/'>
           <Home />

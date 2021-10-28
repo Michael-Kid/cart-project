@@ -90,11 +90,7 @@ const reducer = (state, action) => {
   }
 
   if (action.type === 'ADD_TO_CART') {
-    let tempList = state.list.find((listItem) => {
-      if (listItem.id === action.payload) {
-        return listItem
-      }
-    })
+    let tempList = state.list.find((listItem) => listItem.id === action.payload)
     let newCart = [...state.cart, tempList]
     return { ...state, cart: newCart }
   }

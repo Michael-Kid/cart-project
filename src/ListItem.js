@@ -9,7 +9,7 @@ function ListItem({ id, img, title, price }) {
         <img src={img} alt={title} />
         <h4>{title}</h4>
         <h4 className='item-price'>${price}</h4>
-        <button className='remove-btn' onClick={() => addToCart(id)}>
+        <button className='btn' onClick={() => addToCart(id)}>
           buy
         </button>
       </div>

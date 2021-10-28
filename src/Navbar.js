@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { useGlobalContext } from './context'
 import { Link } from 'react-router-dom'
 
@@ -16,9 +16,6 @@ const Navbar = () => {
             value={search}
             onChange={(e) => sortItems(e.target.value)}
           />
-          <button className='btn' onClick={() => sortItems(search)}>
-            Go
-          </button>
         </div>
         <div className='nav-container'>
           <Link to='/cart'>

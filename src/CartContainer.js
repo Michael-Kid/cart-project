@@ -1,6 +1,7 @@
 import React from 'react'
 import CartItem from './CartItem'
 import { useGlobalContext } from './context'
+import { Link } from 'react-router-dom'
 
 const CartContainer = () => {
   const { cart, total, clearCart } = useGlobalContext()
@@ -12,6 +13,9 @@ const CartContainer = () => {
           <h2>your bag</h2>
           <h4 className='empty-cart'>is currently empty</h4>
         </header>
+        <Link to='/'>
+          <button className='btn btn-empty'>Back to the shop</button>
+        </Link>
       </section>
     )
   }
@@ -24,7 +28,6 @@ const CartContainer = () => {
       {/* cart items */}
       <div>
         {cart.map((item) => {
-          console.log(item)
           return <CartItem key={item.id} {...item} />
         })}
       </div>
